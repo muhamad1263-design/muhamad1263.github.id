@@ -1,663 +1,361 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Habibah Tailor | Jasa Jahit Rapi & Terpercaya</title>
-  <meta name="description" content="Habibah Tailor menyediakan jasa jahit, resize, dan konveksi dengan hasil rapi dan layanan cepat." />
-
-  <style>
-    :root{
-      --bg0:#0b1220;
-      --bg1:#0f1b31;
-      --text:#eaf0ff;
-      --muted:rgba(234,240,255,.72);
-      --brand1:#ff4d6d;
-      --brand2:#7c3aed;
-      --brand3:#00d4ff;
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(124,58,237,.35), transparent 50%),
-        radial-gradient(900px 600px at 90% 10%, rgba(0,212,255,.25), transparent 45%),
-        radial-gradient(1000px 700px at 50% 110%, rgba(255,77,109,.18), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      color: var(--text);
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    .container{ width:min(1100px, 92vw); margin:0 auto; }
-
-    /* Topbar */
-    .topbar{
-      position: sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(10,16,28,.55);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:16px;
-    }
-    .brand{ display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; }
-    .logo{
-      width:42px; height:42px;
-      border-radius:14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 35%),
-        linear-gradient(135deg, var(--brand1), var(--brand2));
-      box-shadow: 0 14px 40px rgba(124,58,237,.35);
-      border: 1px solid rgba(255,255,255,.16);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo:after{
-      content:"";
-      position:absolute; inset:-20px;
-      background: conic-gradient(from 180deg, rgba(0,212,255,.0), rgba(0,212,255,.35), rgba(255,77,109,.0));
-      transform: rotate(8deg);
-      opacity:.75;
-    }
-
-    .nav{ display:flex; gap:18px; align-items:center; color: var(--muted); font-weight:650; font-size:14px; }
-    .nav a{ padding:8px 10px; border-radius:12px; transition:.2s ease; }
-    .nav a:hover{ background: rgba(255,255,255,.06); color: var(--text); }
-
-    .cta{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      font-weight:750;
-      font-size:14px;
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.20); }
-    .primary{
-      border:none;
-      background: linear-gradient(135deg, rgba(255,77,109,.95), rgba(124,58,237,.95));
-      box-shadow: 0 18px 60px rgba(255,77,109,.15);
-    }
-
-    /* Hero */
-    header.hero{ padding: 52px 0 22px; }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    @media (max-width: 900px){
-      .hero-grid{ grid-template-columns:1fr; }
-      .nav{ display:none; }
-    }
-
-    .hero-card{
-      border-radius: 26px;
-      padding: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-card:before{
-      content:"";
-      position:absolute;
-      width:520px; height:520px;
-      right:-260px; top:-320px;
-      background: radial-gradient(circle, rgba(124,58,237,.35), transparent 55%);
-      filter: blur(1px);
-    }
-
-    .badge{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.12);
-      color: var(--muted);
-      font-weight:700;
-      font-size:14px;
-      position:relative; z-index:1;
-    }
-    .dot{ width:10px; height:10px; border-radius:50%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.8), rgba(34,197,94,.95)); box-shadow: 0 0 0 6px rgba(34,197,94,.12); }
-
-    h1{
-      margin:14px 0 10px;
-      font-size: clamp(30px, 4.2vw, 54px);
-      line-height:1.02;
-      letter-spacing:-.8px;
-      position:relative; z-index:1;
-    }
-    .lead{
-      color: var(--muted);
-      font-size: 16.5px;
-      line-height:1.7;
-      margin: 0 0 18px;
-      max-width: 60ch;
-      position:relative; z-index:1;
-    }
-
-    .hero-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; position:relative; z-index:1; }
-
-    .mini-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top: 18px; position:relative; z-index:1; }
-    .mini{
-      border-radius: 18px;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      padding:14px;
-      min-height:92px;
-    }
-    .mini strong{ display:block; font-size:16px; margin-bottom:6px; }
-    .mini span{ color: var(--muted); font-size:13.5px; line-height:1.45; }
-
-    /* Right card */
-    .side{
-      border-radius: 26px;
-      padding: 20px;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .side:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(420px 240px at 30% 20%, rgba(0,212,255,.22), transparent 55%),
-        radial-gradient(420px 240px at 80% 70%, rgba(255,77,109,.18), transparent 55%);
-      pointer-events:none;
-    }
-    .side > *{ position:relative; z-index:1; }
-
-    .carousel{ display:grid; gap:12px; margin-top: 8px; }
-    .photo{
-      border-radius: 20px;
-      padding:16px;
-      background: linear-gradient(135deg, rgba(255,77,109,.20), rgba(124,58,237,.18));
-      border:1px solid rgba(255,255,255,.12);
-      min-height: 130px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap:10px;
-      overflow:hidden;
-      position:relative;
-    }
-    .photo:before{
-      content:"";
-      position:absolute;
-      width:170px; height:170px;
-      border-radius: 40px;
-      background: rgba(255,255,255,.09);
-      top:-50px; left:-40px;
-      transform: rotate(18deg);
-      border:1px solid rgba(255,255,255,.10);
-    }
-    .tag{
-      font-weight:850;
-      font-size:13px;
-      padding:8px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.15);
-      background: rgba(0,0,0,.15);
-      white-space:nowrap;
-      position:relative; z-index:1;
-    }
-    .photo h3{ margin:0; font-size:18px; letter-spacing:-.2px; position:relative; z-index:1; }
-    .photo p{ margin:6px 0 0; color: var(--muted); font-size:13.5px; line-height:1.5; max-width: 32ch; position:relative; z-index:1; }
-
-    /* Sections */
-    section{ padding: 36px 0; }
-    .section-title{ display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
-    .section-title h2{ margin:0; font-size: 24px; letter-spacing:-.4px; }
-    .section-title p{ margin:0; color: var(--muted); font-weight:650; }
-
-    .grid-3{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
-    @media (max-width: 980px){ .grid-3{ grid-template-columns: 1fr; } }
-
-    .card{
-      border-radius: 22px;
-      padding: 18px;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-      min-height: 148px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card:hover{ transform: translateY(-3px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.16); }
-    .card .ic{
-      width:42px; height:42px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(0,212,255,.25), rgba(124,58,237,.18));
-      border:1px solid rgba(255,255,255,.14);
-      display:flex; align-items:center; justify-content:center;
-      font-size:20px;
-      margin-bottom: 12px;
-      position:relative; z-index:1;
-    }
-    .card h3{ margin:0 0 8px; font-size:16.8px; position:relative; z-index:1; }
-    .card p{ margin:0; color: var(--muted); font-size:13.8px; line-height:1.6; position:relative; z-index:1; }
-
-    /* Price */
-    .price-wrap{ display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:start; }
-    @media (max-width: 980px){ .price-wrap{ grid-template-columns:1fr; } }
-
-    .price-card{ border-radius: 22px; padding: 18px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); overflow:hidden; position:relative; }
-    .price-card:before{ content:""; position:absolute; width:420px; height:420px; right:-260px; top:-250px; background: radial-gradient(circle, rgba(255,77,109,.22), transparent 60%); }
-    .price-card > *{ position:relative; z-index:1; }
-
-    .price-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-top: 10px; }
-    @media (max-width: 600px){ .price-grid{ grid-template-columns:1fr; } }
-
-    .price-item{ background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); border-radius: 18px; padding: 14px; }
-    .price-item strong{ display:block; margin-bottom:6px; }
-    .price-item span{ color: var(--muted); font-size:13.5px; line-height:1.5; }
-    .price-item em{ font-style:normal; color: rgba(255,255,255,.92); font-weight:900; }
-
-    /* Testimonials */
-    .quote{
-      border-radius: 22px;
-      padding: 18px;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      min-height: 170px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .quote p{ margin:0; color: var(--muted); line-height:1.7; font-size:14px; }
-    .who{ display:flex; align-items:center; gap:12px; }
-    .avatar{
-      width:44px; height:44px; border-radius:16px;
-      background: linear-gradient(135deg, rgba(0,212,255,.25), rgba(255,77,109,.18));
-      border:1px solid rgba(255,255,255,.12);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:900;
-    }
-    .who strong{ display:block; font-size:14.5px; }
-    .who span{ color: var(--muted); font-size:13px; }
-
-    /* Form */
-    .form-wrap{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; align-items:start; }
-    @media (max-width: 980px){ .form-wrap{ grid-template-columns:1fr; } }
-
-    .form-card{ border-radius: 22px; padding: 18px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); overflow:hidden; }
-
-    label{ display:block; font-weight:800; color: rgba(255,255,255,.92); font-size:13.5px; margin: 10px 0 6px; }
-    input, select, textarea{
-      width:100%;
-      background: rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.12);
-      color: var(--text);
-      padding: 12px 12px;
-      border-radius: 14px;
-      outline:none;
-      transition: border-color .2s ease, background .2s ease;
-      font-size:14.5px;
-    }
-    textarea{ min-height: 110px; resize: vertical; }
-    input:focus, select:focus, textarea:focus{ border-color: rgba(0,212,255,.55); background: rgba(255,255,255,.07); }
-
-    .form-actions{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; align-items:center; }
-    .note{ color: var(--muted); font-size: 13.5px; line-height:1.55; margin: 0; }
-
-    /* FAQ */
-    details{ background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.10); border-radius: 18px; padding: 14px 16px; margin-bottom: 10px; }
-    summary{ cursor:pointer; font-weight: 900; letter-spacing:-.2px; }
-    details p{ margin: 10px 0 0; color: var(--muted); line-height:1.7; font-size:14px; }
-
-    /* Footer */
-    footer{ padding: 26px 0 38px; border-top: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.10); }
-    .footer-grid{ display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; color: var(--muted); font-weight:650; font-size:13.5px; }
-    .kbd{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; padding: 3px 8px; border-radius: 999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); color: rgba(255,255,255,.85); }
-
-    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IKASA (Ikatan Alumni Santri Al Inayah) - organisasi alumni santri Al Inayah" />
+  <title>IKASA | Ikatan Alumni Santri Al Inayah</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
 </head>
 <body>
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <div style="font-size:14px; color:rgba(234,240,255,.88)">Jasa Jahit</div>
-          <div style="font-size:16px">Habibah Tailor</div>
-        </div>
-      </div>
+  <header class="header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="#home" data-nav-link aria-current="page">
+        <span class="logo" aria-hidden="true"></span>
+        <span class="brand-title">
+          <strong>IKASA</strong>
+          <span>Ikatan Alumni Santri Al Inayah</span>
+        </span>
+      </a>
 
-      <nav class="nav" aria-label="Navigasi">
-        <a href="#layanan">Layanan</a>
-        <a href="#harga">Harga</a>
-        <a href="#testimoni">Testimoni</a>
-        <a href="#pesan">Pesan</a>
-        <a href="#faq">FAQ</a>
+      <nav class="nav" aria-label="Navigasi utama">
+        <a data-nav-link href="#home" aria-current="page">Home</a>
+        <a data-nav-link href="#profil">Profil</a>
+        <a data-nav-link href="#kegiatan">Kegiatan</a>
+        <a data-nav-link href="#struktur">Struktur</a>
+        <a data-nav-link href="#galeri">Galeri</a>
+        <a data-nav-link href="#kontak">Kontak</a>
       </nav>
 
-      <div class="cta">
-        <a class="pill" href="#pesan" title="Pesan sekarang">📌 Pesan</a>
-        <a class="pill primary" id="waTop" href="#" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+      <div class="cta-row">
+        <a class="btn primary" href="#kontak" data-nav-link>
+          <span>Daftar / Kontak</span>
+          <span aria-hidden="true">→</span>
+        </a>
+        <button class="hamburger" type="button" data-mobile-toggle aria-label="Buka menu">☰</button>
       </div>
     </div>
-  </div>
 
-  <header class="hero">
-    <div class="container hero-grid">
-      <div class="hero-card">
-        <div class="badge"><span class="dot" aria-hidden="true"></span> Rapi • Rembes halus • Jahitan kuat</div>
-        <h1>Jahit & resize baju dengan hasil yang <span style="background:linear-gradient(135deg,var(--brand3),var(--brand1)); -webkit-background-clip:text; background-clip:text; color:transparent;">rapi</span> dan nyaman</h1>
-        <p class="lead">Habibah Tailor siap bantu jahit kebaya, seragam, gaun, hingga perbaikan (resize) untuk kebutuhan harian maupun acara. Konsultasi mudah lewat WhatsApp.</p>
-
-        <div class="hero-actions">
-          <a class="pill primary" id="waHero" href="#" target="_blank" rel="noopener noreferrer">💬 Konsultasi via WhatsApp</a>
-          <a class="pill" href="#harga">📌 Lihat kisaran harga</a>
-        </div>
-
-        <div class="mini-grid">
-          <div class="mini">
-            <strong>Respon cepat</strong>
-            <span>Chat dulu, nanti dibantu jelaskan detail ukuran & estimasi.</span>
-          </div>
-          <div class="mini">
-            <strong>Rapi & rapi lagi</strong>
-            <span>Finishing halus, jahitan kuat, nyaman dipakai.</span>
-          </div>
-        </div>
+    <div class="container mobile-drawer" data-mobile-drawer>
+      <div class="mobile-links" role="navigation" aria-label="Menu mobile">
+        <a data-nav-link href="#home" aria-current="page">Home</a>
+        <a data-nav-link href="#profil">Profil</a>
+        <a data-nav-link href="#kegiatan">Kegiatan</a>
+        <a data-nav-link href="#struktur">Struktur</a>
+        <a data-nav-link href="#galeri">Galeri</a>
+        <a data-nav-link href="#kontak">Kontak</a>
       </div>
-
-      <aside class="side" aria-label="Keunggulan">
-        <div class="carousel">
-          <div class="photo">
-            <div>
-              <h3>Kebaya</h3>
-              <p>Jahit sesuai model & bahan pilihanmu.</p>
-            </div>
-            <div class="tag">✨ Rapih</div>
-          </div>
-          <div class="photo">
-            <div>
-              <h3>Resize & Perbaikan</h3>
-              <p>Muat kembali tanpa mengubah bentuk utama.</p>
-            </div>
-            <div class="tag">🧵 Presisi</div>
-          </div>
-          <div class="photo">
-            <div>
-              <h3>Konveksi Seragam</h3>
-              <p>Untuk sekolah/komunitas—tuntas & seragam.</p>
-            </div>
-            <div class="tag">🏷️ Kompak</div>
-          </div>
-        </div>
-      </aside>
     </div>
   </header>
 
-  <section id="layanan">
-    <div class="container">
-      <div class="section-title">
-        <h2>Layanan Utama</h2>
-        <p>Semua bisa konsultasi via WhatsApp</p>
-      </div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="ic">👗</div>
-          <h3>Jahit Kebaya & Gaun</h3>
-          <p>Mulai dari jahit baru hingga penyesuaian model agar pas dan elegan.</p>
-        </div>
-        <div class="card">
-          <div class="ic">🧷</div>
-          <h3>Resize (Perkecil/Memperbesar)</h3>
-          <p>Ubah ukuran dengan tetap menjaga potongan dan detail jahitan.</p>
-        </div>
-        <div class="card">
-          <div class="ic">🧑‍🤝‍🧑</div>
-          <h3>Konveksi & Seragam</h3>
-          <p>Seragam rapi, konsisten ukuran, dan finishing yang rapi.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main>
+    <div class="watermark" aria-hidden="true"></div>
+    <!-- HERO / HOME -->
+    <section class="hero section" id="home" aria-label="IKASA">
+      <div class="container hero-grid">
+        <article class="hero-card">
+          <div class="hero-content">
+            <div class="kicker">
+              <span class="dot" aria-hidden="true"></span>
+              <span>Organisasi Alumni Santri Al Inayah</span>
+            </div>
+            <h1>IKASA, jembatan silaturahmi & kontribusi alumni</h1>
+            <p class="sub">
+              Website resmi organisasi <strong>IKASA (Ikatan Alumni Santri Al Inayah)</strong>.
+              Wadah untuk mempererat persaudaraan, menjalankan program sosial, dan mendukung kegiatan pondok.
+            </p>
 
-  <section id="harga">
-    <div class="container">
-      <div class="section-title">
-        <h2>Kisaran Harga</h2>
-        <p>Estimasi awal, final tergantung bahan & kerumitan</p>
-      </div>
-
-      <div class="price-wrap">
-        <div class="price-card">
-          <h3 style="margin:0 0 6px; font-size:18px; letter-spacing:-.2px;">Paket Umum</h3>
-          <div class="price-grid">
-            <div class="price-item">
-              <strong>Resize Baju</strong>
-              <span>Penyesuaian muat & finishing.</span>
-              <em>Mulai Rp25k</em>
-            </div>
-            <div class="price-item">
-              <strong>Jahit Kebaya</strong>
-              <span>Model & bahan menyesuaikan.</span>
-              <em>Mulai Rp150k</em>
-            </div>
-            <div class="price-item">
-              <strong>Seragam</strong>
-              <span>Untuk sekolah/komunitas.</span>
-              <em>Mulai Rp75k</em>
-            </div>
-            <div class="price-item">
-              <strong>Perbaikan</strong>
-              <span>Balik kancing, rapikan tepi, dll.</span>
-              <em>Mulai Rp20k</em>
+            <div class="hero-actions">
+              <a class="btn primary" href="#kegiatan" data-nav-link>
+                Lihat Kegiatan
+                <span aria-hidden="true">→</span>
+              </a>
+              <a class="btn" href="#profil" data-nav-link>
+                Profil IKASA
+              </a>
+              <span class="pill" style="border-radius:999px;">
             </div>
           </div>
-          <p class="note" style="margin-top:12px;">Tip: kirim foto/ukuran di chat agar estimasi lebih akurat.</p>
+        </article>
+
+        <aside class="hero-meta">
+          <div class="side-card">
+            <h3>Visi</h3>
+            <p>Menjadi organisasi alumni yang kuat, berdaya, dan membawa manfaat berkelanjutan bagi umat.</p>
+            <div class="pills" aria-hidden="true">
+              <span class="pill">Silaturahmi</span>
+              <span class="pill">Tarbiyah</span>
+              <span class="pill">Kolaborasi</span>
+            </div>
+          </div>
+
+          <div class="side-card">
+            <h3>Misi</h3>
+            <div class="list" style="margin-top:10px;">
+              <div class="item">
+                <div class="badge" aria-hidden="true">1</div>
+                <div>
+                  <strong>Memperkuat jaringan alumni</strong>
+                  <span>komunikasi aktif lintas angkatan</span>
+                </div>
+              </div>
+              <div class="item">
+                <div class="badge" aria-hidden="true">2</div>
+                <div>
+                  <strong>Program sosial dan dukungan pondok</strong>
+                  <span>aksi nyata melalui kegiatan bersama</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROFIL -->
+    <section class="section" id="profil" aria-label="Profil IKASA">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Profil</h2>
+            <p>Ringkasan organisasi IKASA</p>
+          </div>
         </div>
 
-        <div class="price-card">
-          <h3 style="margin:0 0 10px; font-size:18px; letter-spacing:-.2px;">Cara Cepat Pesan</h3>
-          <div class="card" style="min-height:auto; margin-bottom:12px;">
-            <div class="ic">1</div>
-            <h3 style="margin-top:0;">Isi form</h3>
-            <p>Masukkan layanan, ukuran/model, dan catatan.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Siapa kami</h3>
+            <p>IKASA adalah ikatan alumni santri Al Inayah yang berkomitmen menjaga ukhuwah.</p>
           </div>
-          <div class="card" style="min-height:auto;">
-            <div class="ic">2</div>
-            <h3 style="margin-top:0;">Kirim ke WhatsApp</h3>
-            <p>Pesan otomatis dibuka di WhatsApp untuk konfirmasi.</p>
+          <div class="card">
+            <h3>Tujuan</h3>
+            <p>Menyatukan alumni dalam program berorientasi manfaat untuk masyarakat dan pondok.</p>
+          </div>
+          <div class="card">
+            <h3>Nilai</h3>
+            <p>Keilmuan, adab, persaudaraan, serta semangat pelayanan.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="testimoni">
-    <div class="container">
-      <div class="section-title">
-        <h2>Testimoni Pelanggan</h2>
-        <p>Terima kasih sudah percaya</p>
+    <!-- KEGIATAN -->
+    <section class="section" id="kegiatan" aria-label="Kegiatan IKASA">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Kegiatan</h2>
+            <p>Contoh program (silakan ganti sesuai kegiatan nyata)</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Rapat & Musyawarah</h3>
+            <p>Koordinasi rutin pengurus dan penyusunan agenda bersama.</p>
+          </div>
+          <div class="card">
+            <h3>Donasi & Aksi Sosial</h3>
+            <p>Program bantuan untuk kebutuhan mendesak dan dukungan kegiatan pondok.</p>
+          </div>
+          <div class="card">
+            <h3>Silaturahmi Akbar</h3>
+            <p>Pertemuan alumni lintas angkatan untuk mempererat hubungan.</p>
+          </div>
+          <div class="card">
+            <h3>Pengabdian Masyarakat</h3>
+            <p>Kegiatan kolaborasi alumni dalam layanan masyarakat.</p>
+          </div>
+        </div>
       </div>
-      <div class="grid-3">
-        <div class="quote">
-          <p>Jahitannya rapi banget, ukurannya pas. Finishing halus, tidak terlihat benang yang “nempel” ke luar.</p>
-          <div class="who">
-            <div class="avatar">A</div>
+    </section>
+
+    <!-- STRUKTUR -->
+    <section class="section" id="struktur" aria-label="Struktur IKASA">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Struktur</h2>
+            <p>Template susunan kepengurusan</p>
+          </div>
+        </div>
+
+        <div class="list">
+          <div class="item">
+            <div class="badge" aria-hidden="true">K</div>
             <div>
-              <strong>Atika</strong>
-              <span>Resize baju</span>
+              <strong>Ketua</strong>
+              <span>Ahmad Daerobi</span>
             </div>
+          </div>
+          <div class="item">
+            <div class="badge" aria-hidden="true">W</div>
+            <div>
+              <strong>Wakil Ketua</strong>
+              <span>Muhamad Faisal Asyuja, M.Pd. Gr.</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="badge" aria-hidden="true">S</div>
+            <div>
+              <strong>Sekretaris</strong>
+              <span>Muhtadin, S.Pd</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="badge" aria-hidden="true">B</div>
+            <div>
+              <strong>Bendahara</strong>
+              <span>sindi wanda Lestari</span>
+            </div>
+          </div><div class="item">
+            <div class="badge" aria-hidden="true">B</div>
+            <div>
+              <strong>Bidang Pendidikan dan Dakwah</strong>
+              <span>Muhamad Alpian M.Pd.Gr,</span>
+              <br><small>Muhamad Rusdiansyah, S.Pd</small><br>
+              <tr><small>Ahmad Darojat S.Pd</small></tr>
+              <br><small>Tania Ayu Pratiftah</small>
+            </div>
+          </div><div class="item">
+            <div class="badge" aria-hidden="true">B</div>
+            <div>
+              <strong>Bidang Pengembangan Sumber Daya Alumni (BPSDA)</strong>
+              <span>Firmansyah, S.Pd</span>
+              <br><small>Akbar Sobari, S.Pd</small><br>
+              <tr><small>Muhamad Bahrul Ulum, S.E</small></tr>
+              <br><small>Nuryalimah, S.Pd</small>
+            </div>
+          </div><div class="item">
+            <div class="badge" aria-hidden="true">B</div>
+            <div>
+              <strong>Hubungan Masyarakat (HUMAS)</strong>
+              <span>Sunandi</span>
+              <br><small>Muhamad Hilal Alwi</small><br>
+              <tr><small>Ahmad Zaki</small></tr>
+              <br><small>Naim Mursalin</small>
+            </div>
+          </div><div class="item">
+            <div class="badge" aria-hidden="true">B</div>
+            <div>
+              <strong>Bidang Kegiatan Alumni</strong>
+              <span>Muhamad Aja Firmansyah, S.Pd</span>
+              <br><small>Muhamma ibnu Fathussurur, S.Pd</small><br>
+              <tr><small>Azizah Khairunisa, S.pd</small></tr>
+              <br><small>Siti Aisah</small>
+            </div>
+          </div><div class="item">
+            <div class="badge" aria-hidden="true">B</div>
+            <div>
+              <strong>Bidang Usaha</strong>
+              <span>Muhamad Riki</span>
+              <br><small>Rizal Maulana</small><br>
+      </div>
+    </section>
+
+    <!-- GALERI -->
+    <section class="section" id="galeri" aria-label="Galeri IKASA">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Galeri</h2>
           </div>
         </div>
-        <div class="quote">
-          <p>Respon cepat lewat WhatsApp. Dibantu pilih model & estimasi waktu. Hasilnya bagus dan nyaman dipakai acara.</p>
-          <div class="who">
-            <div class="avatar">R</div>
-            <div>
-              <strong>Rahma</strong>
-              <span>Jahit kebaya</span>
-            </div>
-          </div>
-        </div>
-        <div class="quote">
-          <p>Seragam komunitas kami jadi kompak dan ukuran seragam. Pengerjaan tuntas dan sesuai kesepakatan.</p>
-          <div class="who">
-            <div class="avatar">S</div>
-            <div>
-              <strong>Saiful</strong>
-              <span>Konveksi seragam</span>
-            </div>
-          </div>
+
+        <div class="gallery" role="list">
+          <figure role="listitem">
+            <img src="reuni.jpeg" 
+            <figcaption>Silaturahmi tahunan</figcaption>
+          </figure>
+          <figure role="listitem">
+            <img src="bakti pondok.jpeg"
+            <figcaption>Donasi & aksi sosial</figcaption>
+          </figure>
+          <figure role="listitem">
+            <img src="rapat.jpeg"
+            <figcaption>Rapat musyawarah</figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="pesan">
-    <div class="container">
-      <div class="section-title">
-        <h2>Form Pemesanan</h2>
-        <p>Kirim data → otomatis buka WhatsApp</p>
-      </div>
+    <!-- KONTAK -->
+    <section class="section" id="kontak" aria-label="Kontak IKASA">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2>Kontak</h2>
+            <p>Hubungi IKASA untuk pendaftaran atau kolaborasi</p>
+          </div>
+        </div>
 
-      <div class="form-wrap">
-        <div class="form-card">
-          <h3 style="margin:0 0 10px; font-size:18px; letter-spacing:-.2px;">Detail Pesanan</h3>
-          <form id="formPesan">
-            <label for="fNama">Nama</label>
-            <input id="fNama" name="nama" type="text" placeholder="Contoh: Siti A" required />
+        <div class="grid-2">
+          <div class="card">
+            <h3>Alamat</h3>
+            <p><strong>Alamat lengkap:</strong> Kp. Pasir, Jl. Danau Bogor Raya, RT. 001 / RW. 012,</p>
+            <p><strong>Kota/Provinsi:</strong> Bogor/Jawa barat</p>
+          </div>
+          <div class="card">
+            <h3>Media</h3>
+            <p><strong>Email:</strong> ikasa@gmail.com</p>
+            <p><strong>Instagram:</strong> official_Ikasa</p>
+<p><strong>WhatsApp:</strong> 0895346281507</p>
+          </div>
+        </div>
 
-            <label for="fLayanan">Layanan</label>
-            <select id="fLayanan" name="layanan" required>
-              <option value="Jahit Kebaya/Gaun">Jahit Kebaya/Gaun</option>
-              <option value="Resize Baju">Resize Baju</option>
-              <option value="Konveksi Seragam">Konveksi Seragam</option>
-              <option value="Perbaikan">Perbaikan</option>
-            </select>
-
-            <label for="fUkuran">Ukuran/Model</label>
-            <input id="fUkuran" name="ukuran" type="text" placeholder="Contoh: S/M/L, lingkar dada, panjang" />
-
-            <label for="fCatatan">Catatan (opsional)</label>
-            <textarea id="fCatatan" name="catatan" placeholder="Contoh: mau dipasang resleting, ada foto model, bahan satin/katun..."></textarea>
-
-            <div class="form-actions">
-              <button class="pill primary" type="submit">📨 Kirim via WhatsApp</button>
-              <p class="note">Data akan dimasukkan ke pesan WhatsApp.</p>
-            </div>
+        <div class="card" style="margin-top:14px;">
+          <h3>Kritik & Saran</h3>
+  
+          <form id="contactForm" class="list" style="margin-top:10px;">
+            <label style="display:block;">
+              <span style="color: rgba(0, 0, 0, 0.86); font-size: 14px;">Nama</span>
+              <input name="name" required placeholder="Nama lengkap" style="margin-top:8px; width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: var(--text);" />
+            </label>
+            <label style="display:block;">
+              <span style="color: rgba(0, 0, 0, 0.86); font-size: 14px;">Angkatan</span>
+              <input name="batch" placeholder="Contoh: 2016 / 2018" style="margin-top:8px; width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: var(--text);" />
+            </label>
+            <label style="display:block;">
+              <span style="color: rgba(1, 0, 0, 0.86); font-size: 14px;">Pesan</span>
+              <input name="masaage" placeholder="Tulis pesan" style="margin-top:8px; width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.05); color: var(--text);" />
+            </label>
+            <button class="btn primary" type="submit" style="justify-self:start;">
+              Kirim Pesan
+              <span aria-hidden="true">→</span>
+            </button>
+            <p id="formStatus" style="margin:0; color: rgba(0, 0, 0, 0.75); font-size: 14px;"></p>
           </form>
         </div>
-
-        <div class="form-card">
-          <h3 style="margin:0 0 10px; font-size:18px; letter-spacing:-.2px;">Info yang membantu</h3>
-          <div class="card" style="min-height:auto; margin-bottom:12px;">
-            <div class="ic">💡</div>
-            <h3 style="margin-top:0;">Kirim foto</h3>
-            <p>Kalau ada, kirim foto bahan/model supaya estimasi lebih akurat.</p>
-          </div>
-          <div class="card" style="min-height:auto;">
-            <div class="ic">⏱️</div>
-            <h3 style="margin-top:0;">Deadline acara</h3>
-            <p>Tulis tanggal butuh hasil, nanti kami bantu cek estimasi.</p>
-          </div>
-
-          <p class="note" style="margin-top:12px;">Jam operasional: <span class="kbd">08:00 - 20:00</span> (Senin - Minggu)</p>
-          <p class="note">Lokasi: mengikuti wilayah sekitar pelanggan (konfirmasi via chat).</p>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section id="faq">
-    <div class="container">
-      <div class="section-title">
-        <h2>FAQ</h2>
-        <p>Pertanyaan yang sering ditanyakan</p>
-      </div>
-
-      <details open>
-        <summary>Berapa lama pengerjaannya?</summary>
-        <p>Waktu pengerjaan tergantung jenis layanan dan tingkat kerumitan. Kirim info (ukuran/bahan/deadline) lewat WhatsApp untuk estimasi yang paling tepat.</p>
-      </details>
-      <details>
-        <summary>Apakah menerima resize baju?</summary>
-        <p>Bisa. Kami bantu perkecil/perbesar dengan tetap menjaga potongan dan kerapian jahitan.</p>
-      </details>
-      <details>
-        <summary>Apakah bisa konveksi seragam dalam jumlah?</summary>
-        <p>Bisa. Konfirmasi jumlah, model, dan ukuran tiap orang lewat WhatsApp agar kami siapkan rencana pengerjaan.</p>
-      </details>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-grid">
+  <footer class="footer">
+    <div class="container footer-inner">
       <div>
-        <div style="color:rgba(234,240,255,.9); font-weight:900; margin-bottom:6px;">Habibah Tailor</div>
-        <div>Jahit • Resize • Konveksi</div>
+        <strong style="color: rgba(1, 0, 0, 0.9);">IKASA</strong>
+        <div style="margin-top:6px;">© <span id="year"></span> Ikatan Alumni Santri Al Inayah</div>
       </div>
       <div>
-        <div>Chat cepat: <span class="kbd">WhatsApp</span></div>
-        <div style="margin-top:6px;">Nomor: <span class="kbd">09654758310</span></div>
-      </div>
-      <div>
-        <div>Jam operasional</div>
-        <div style="margin-top:6px;"><span class="kbd">08:00 - 20:00</span></div>
       </div>
     </div>
   </footer>
 
+  <script src="./assets/app.js"></script>
   <script>
-    (function(){
-      const waNumber = '09654758310';
-      const waPhone = waNumber.replace(/\D/g,'');
+    // small form placeholder
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
 
-      const toWhatsAppLink = (text) => {
-        const msg = encodeURIComponent(text || 'Halo Habibah Tailor, saya ingin konsultasi jahit/resize.');
-        return `https://wa.me/${waPhone}?text=${msg}`;
-      };
-
-      const waTop = document.getElementById('waTop');
-      const waHero = document.getElementById('waHero');
-      if (waTop) waTop.href = toWhatsAppLink('Halo Habibah Tailor, saya ingin konsultasi jahit/resize.');
-      if (waHero) waHero.href = toWhatsAppLink('Halo Habibah Tailor, saya ingin konsultasi jahit/resize.');
-
-      // Form -> WhatsApp
-      const form = document.getElementById('formPesan');
-      if (form){
-        form.addEventListener('submit', function(ev){
-          ev.preventDefault();
-          const nama = (document.getElementById('fNama')?.value || '').trim();
-          const layanan = document.getElementById('fLayanan')?.value || '';
-          const ukuran = (document.getElementById('fUkuran')?.value || '').trim();
-          const catatan = (document.getElementById('fCatatan')?.value || '').trim();
-
-          const text = [
-            `Halo Habibah Tailor 👋`,
-            nama ? `Nama: ${nama}` : '',
-            layanan ? `Layanan: ${layanan}` : '',
-            ukuran ? `Ukuran/Model: ${ukuran}` : '',
-            catatan ? `Catatan: ${catatan}` : '',
-            `Mohon info estimasi harga & waktu pengerjaan ya. Terima kasih!`
-          ].filter(Boolean).join('\n');
-
-          window.open(toWhatsAppLink(text), '_blank', 'noopener');
-        });
-      }
-    })();
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    if (form && status) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        status.textContent = 'Pesan terkirim (placeholder). Hubungkan form ini ke backend/Google Form jika diperlukan.';
+        form.reset();
+      });
+    }
   </script>
 </body>
 </html>
